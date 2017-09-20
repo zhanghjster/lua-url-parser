@@ -195,7 +195,10 @@ function M.parseQuery(str, sep)
 		key = key:gsub('=+.*$', "")
 		key = key:gsub('%s', "_") -- remove spaces in parameter name
 		val = val:gsub('^=+', "")
-	
+            
+        --[[
+        --  支持 foo=1&foo=2&foo=3 的多值参数
+        --]]
 		if values[key] then
             if type(values[key]) == 'string' then
                 local tmp = values[key]
